@@ -1,7 +1,5 @@
 class User < ApplicationRecord
   def passed_tests(level)
-    questions_id = Answer.where(user_id: @id).select(:question_id)
-    tests_id = Question.where(id: questions_id).select(:test_id)
-    Test.where(id: tests_id)
+    Test.where(level: level).joins("INNER JOIN tests_users ON tests.id = tests_users.test_id").where("tests_users.user_id = ?", self.id)
   end
 end
