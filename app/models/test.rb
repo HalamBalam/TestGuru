@@ -12,9 +12,9 @@ class Test < ApplicationRecord
     joins("INNER JOIN categories ON categories.id = tests.category_id").where("categories.title=?", category_title).order('categories.title DESC')
   }
 
-  scope :passed_tests, -> (user, level) {
-    where(level: level).joins("INNER JOIN tests_users ON tests.id = tests_users.test_id").where("tests_users.user_id = ?", user.id)
-  }
+  def self.test_names_by_category_title(category_title)
+    tests_by_category_title(category_title).pluck(:title)
+  end
 
   validates :title, presence: true
   validates :level, numericality: { only_integer: true, greater_than: 0 }

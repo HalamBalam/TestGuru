@@ -7,6 +7,6 @@ class Answer < ApplicationRecord
   validate :validate_answers_count
 
   def validate_answers_count
-    errors.add(:base) unless (1..4).include? question.answers.count
+    errors.add(:base) if question.answers.count > 4
   end
 end
