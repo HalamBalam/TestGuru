@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   
-  before_action :find_test, only: %i[index]
-  before_action :find_question, only: %i[destroy, show]
+  before_action :find_test, only: %i[index create]
+  before_action :find_question, only: %i[destroy show]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
@@ -18,9 +18,14 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    question = Question.create(question_params)
+    question = @test.questions.new(question_params)
 
-    render plain: question.inspect
+    if question.save
+      render plain: "Создан вопрос: #{question.inspect}"
+    else
+      render plain: question.errors.full_messages
+    end
+    
   end
 
   def destroy
@@ -32,7 +37,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:test_id, :body)  
+    params.require(:question).permit(:body)  
   end
 
   def find_test
@@ -45,5 +50,6 @@ class QuestionsController < ApplicationController
 
   def rescue_with_question_not_found
     render plain: 'Question was not found'
+    404
   end
 end
