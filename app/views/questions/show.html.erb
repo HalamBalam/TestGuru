@@ -1,0 +1,13 @@
+<h1>Question</h1>
+
+<form>
+  <p>
+    <label for="question-test">Test:</label>
+    <input type="text" name="question[test]" id="question-test" value="<%= @question.test.title %>">
+  </p><br>
+
+  <p>
+    <label for="question-body">Body:</label>
+    <input type="text" name="question[body]" id="question-body" value="<%= @question.body %>">
+  </p>
+</form>
