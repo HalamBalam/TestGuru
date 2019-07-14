@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   
-  before_action :find_test, only: %i[index create]
-  before_action :find_question, only: %i[destroy show]
+  before_action :find_test, only: %i[index create new]
+  before_action :find_question, only: %i[destroy show edit update]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
@@ -10,28 +10,38 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    render file: '/app/views/questions/show.html.erb'
   end
 
   def new
-    render file: '/app/views/questions/new.html.erb' 
+    @question = @test.questions.new
+  end
+
+  def edit 
   end
 
   def create
-    question = @test.questions.new(question_params)
+    @question = @test.questions.new(question_params)
 
-    if question.save
-      render plain: "Создан вопрос: #{question.inspect}"
+    if @question.save
+      redirect_to @test
     else
-      render plain: question.errors.full_messages
+      render :new
     end
     
+  end
+
+  def update
+    if @question.update(question_params)
+      redirect_to @question
+    else
+      render :edit
+    end
   end
 
   def destroy
     @question.destroy
 
-    render plain: 'Question was deleted'
+    redirect_to @question.test
   end
 
   private
