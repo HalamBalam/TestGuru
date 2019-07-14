@@ -25,7 +25,6 @@ class QuestionsController < ApplicationController
     if @question.save
       redirect_to @test
     else
-      @question = @test.questions.new
       render :new
     end
     
@@ -35,7 +34,6 @@ class QuestionsController < ApplicationController
     if @question.update(question_params)
       redirect_to @question
     else
-      find_question
       render :edit
     end
   end
