@@ -1,0 +1,12 @@
+<h1>The <%= @test_passage.test.title %> Test was Completed!</h1>
+
+<p>
+  <% percent = @test_passage.correct_questions / @test_passage.test.questions.count * 100 %>
+  <% if percent >= 85 %>
+    <font color="green">Тест успешно пройден</font>
+  <% else %>
+    <font color="red">Тест не пройден</font>
+  <% end %>
+</p>
+
+<%= link_to 'Back to tests', tests_path %>
