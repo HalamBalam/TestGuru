@@ -1,9 +1,11 @@
 class Test < ApplicationRecord
   belongs_to :category
-  has_many :questions
-  has_and_belongs_to_many :users
   belongs_to :author, class_name: 'User', foreign_key: 'user_id'
-
+  
+  has_many :questions
+  has_many :test_passages
+  has_many :users, through: :test_passages
+  
   scope :easy, -> { where(level: 0..1) }
   scope :medium, -> { where(level: 2..4) }
   scope :hard, -> { where(level: 5..Float::INFINITY) }
@@ -14,6 +16,11 @@ class Test < ApplicationRecord
 
   def self.test_names_by_category_title(category_title)
     tests_by_category_title(category_title).pluck(:title)
+  end
+
+  def question_number(question)
+    index = self.questions.order(:id).index(question) || 0
+    index += 1
   end
 
   validates :title, presence: true
