@@ -10,6 +10,26 @@
   </head>
 
   <body>
+    <p>
+      <h1>Проект <%= link_to 'TestGuru', root_path %> (<%= github_url('HalamBalam', 'TestGuru') %>).</h1>
+      <h3>Приложение для создания и прохождения тестов по различным предметам</h3>
+    </p>
+
+    <% if logged_in? %>
+      <p class="nav user">
+        Welcome, <b><%= current_user.email %></b> Guru
+        <%= link_to 'Exit', log_out_path %>
+      </p>
+    <% end %>
+
     <%= yield %>
+
+    <p>
+      <%= current_year %>, Сурганов Антон.
+    </p>
+
+    <p>
+      Учебный проект в онлайн-школе <%= link_to 'Thinknetica', 'http://thinknetica.com/', target: "_blank" %>
+    </p>
   </body>
 </html>
