@@ -8,4 +8,12 @@ module ApplicationHelper
     link_to 'GitHub', "https://github.com/#{author}/#{repo}", target: "_blank"
   end
 
+  def add_alert(message)
+    flash.now[:alert] = message
+  end
+
+  def has_alert?
+    flash[:alert]
+  end
+
 end
