@@ -15,12 +15,14 @@
       <h3>Приложение для создания и прохождения тестов по различным предметам</h3>
     </p>
 
-    <% if logged_in? %>
+    <% if user_signed_in? %>
       <p class="nav user">
-        Welcome, <b><%= current_user.email %></b> Guru
-        <%= link_to 'Exit', log_out_path %>
+        Welcome, <b><%= current_user.email %></b> Guru |
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
       </p>
     <% end %>
+
+    <%= render 'shared/flash' %>
 
     <%= yield %>
 
