@@ -23,4 +23,12 @@ class User < ApplicationRecord
     test_passages.order(id: :desc).find_by(test_id: test.id)
   end
 
+  def admin?
+    self.is_a?(Admin)
+  end
+
+  def name
+    first_name.nil? ? email : first_name
+  end
+
 end
