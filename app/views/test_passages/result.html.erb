@@ -1,11 +1,11 @@
-<h1>The <%= @test_passage.test.title %> Test was Completed!</h1>
+<h1><%= t('.header', title: @test_passage.test.title) %></h1>
 
 <p>
   <% if @test_passage.test_passed? %>
-    <font color="green">Тест успешно пройден</font>
+    <font color="green"><%= t('.success') %></font>
   <% else %>
-    <font color="red">Тест не пройден</font>
+    <font color="red"><%= t('.failure') %></font>
   <% end %>
 </p>
 
-<%= link_to 'Back to tests', tests_path %>
+<%= link_to t('.back'), tests_path %>
