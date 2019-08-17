@@ -19,6 +19,10 @@ en:
       header:
         one: "%{count} error detected"
         other: "%{count} errors detected"
+    nav:
+      login: "Log in"
+      logout: "Log out"
+      signup: "Sign up"
 
   tests:
     test:
@@ -60,9 +64,9 @@ en:
         delete: "Delete"
         confirm: "Are you sure?"
     nav:
-      header: "TestGuru Admin Panel"
+      header: "Admin Panel for"
       welcome: "Welcome"
-      logout: "Logout"
+      logout: "Log out"
 
   tests_mailer:
     completed_test:

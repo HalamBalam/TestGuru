@@ -21,6 +21,10 @@ ru:
         many: "Обнаружено %{count} ошибок"
         one: "Обнаружена %{count} ошибка"
         other: "Обнаружено %{count} ошибки"
+    nav:
+      login: "Вход"
+      logout: "Выход"
+      signup: "Регистрация"
 
   tests:
     test:
@@ -62,7 +66,7 @@ ru:
         delete: "Удалить"
         confirm: "Удалить выбранный вопрос?"  
     nav:
-      header: "Панель администратора TestGuru"
+      header: "Панель администратора"
       welcome: "Добро пожаловать"
       logout: "Выход"
 

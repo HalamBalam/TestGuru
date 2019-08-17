@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <title>TestGuru</title>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,28 +14,21 @@
   </head>
 
   <body>
-    <p>
-      <h1>Проект <%= link_to 'TestGuru', root_path %> (<%= github_url('HalamBalam', 'TestGuru') %>).</h1>
-      <h3>Приложение для создания и прохождения тестов по различным предметам</h3>
-    </p>
+    <%= render 'shared/nav' %>
 
-    <% if user_signed_in? %>
-      <p class="nav user">
-        Welcome, <b><%= current_user.email %></b> Guru |
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-      </p>
-    <% end %>
+    <div class="container">
+      <%= render 'shared/flash' %>
+      <%= yield %>
 
-    <%= render 'shared/flash' %>
+      <div class="row mt-3">
+        <%= current_year %>, Сурганов Антон.
+      </div>
 
-    <%= yield %>
-
-    <p>
-      <%= current_year %>, Сурганов Антон.
-    </p>
-
-    <p>
-      Учебный проект в онлайн-школе <%= link_to 'Thinknetica', 'http://thinknetica.com/', target: "_blank" %>
-    </p>
+      <div class="row">
+        <p>
+          Учебный проект в онлайн-школе <%= link_to 'Thinknetica', 'http://thinknetica.com/', target: "_blank" %>
+        </p>
+      </div>
+    </div>
   </body>
 </html>

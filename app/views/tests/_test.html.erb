@@ -1,6 +1,6 @@
 <tr>
-  <td><%= test.title %></td>
-  <td><%= test_level(test) %></td>
-  <td><%= test.questions.count %></td>
-  <td><%= button_to t('.start'), start_test_path(test) %></td>
+  <td class="col col-md-5"><%= test.title %></td>
+  <td class="col col-md-2"><%= test_level(test) %></td>
+  <td class="col col-md-3"><%= test.questions.count %></td>
+  <td class="col col-md-2"><%= button_to t('.start'), start_test_path(test), class: 'btn btn-secondary' %></td>
 </tr>
