@@ -1,7 +1,21 @@
-<nav class="navbar navbar-dark bg-primary">
+<nav class="navbar navbar-expand navbar-dark bg-primary">
   <span class="navbar-brand">
     <%= t('.header') %> <%= link_to 'TestGuru', admin_tests_path, class: 'navbar-brand' %>
   </span>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item-dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= t('.menu.header') %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to t('.menu.tests'), admin_tests_path, class: 'dropdown-item' %>
+          <%= link_to t('.menu.gists'), admin_gists_path, class: 'dropdown-item' %>
+        </div> 
+      </li>
+    </ul>
+  </div>
 
   <span class="navbar-text">
     <%= t('.welcome') %>, <b><%= current_user.email %></b> Guru |
