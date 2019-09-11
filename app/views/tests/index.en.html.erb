@@ -1,9 +1,13 @@
 <h1>Tricky Tests</h1>
 
 <div class="row">
-  <table>
+  <table class="table">
     <tr>
-      <th class="col col-md-5">Title</th>
+      <th class="sort-by-title pointer col col-md-5">
+        Title
+        <%= octicon 'arrow-up', class: 'text-success hide' %>
+        <%= octicon 'arrow-down', class: 'text-success hide' %>
+      </th>
       <th class="col col-md-2">Level</th>
       <th class="col col-md-3">Questions</th>
       <th class="col col-md-2">Actions</th>
