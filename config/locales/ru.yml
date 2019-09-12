@@ -39,6 +39,12 @@ ru:
     show:
       header: "Прохождение теста %{title} (%{current_question} из %{number_of_questions})"
       next: "Далее"
+    gist:
+      success: "Gist успешно сохранён! URL: %{url}"
+      failure: "Во время сохранения gist произошла ошибка"
+
+  gist_question_service:
+    description: "Вопрос из теста %{test} приложения TestGuru"
 
   admin:
     tests:
@@ -69,6 +75,10 @@ ru:
       header: "Панель администратора"
       welcome: "Добро пожаловать"
       logout: "Выход"
+      menu:
+        header: "Меню"
+        tests: "Доступные тесты"
+        gists: "Gists"
 
   tests_mailer:
     completed_test:

@@ -37,6 +37,12 @@ en:
     show:
       header: "Passing the %{title} Test (%{current_question} of %{number_of_questions})"
       next: "Next"
+    gist:
+      success: "Gist was successfully created! URL: %{url}"
+      failure: "An error occured while saving gist"
+
+  gist_question_service:
+    description: "A question about %{test} from TestGuru"
 
   admin:
     tests:
@@ -67,6 +73,10 @@ en:
       header: "Admin Panel for"
       welcome: "Welcome"
       logout: "Log out"
+      menu:
+        header: "Menu"
+        tests: "Tests"
+        gists: "Gists"
 
   tests_mailer:
     completed_test:
