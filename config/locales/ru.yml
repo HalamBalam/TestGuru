@@ -37,7 +37,7 @@ ru:
       failure: "Тест не сдан"
       back: "Вернуться к тестам"
     show:
-      header: "Прохождение теста %{title} (%{current_question} из %{number_of_questions})"
+      header: "Прохождение теста %{title}"
       next: "Далее"
     gist:
       success: "Gist успешно сохранён! URL: %{url}"
@@ -65,6 +65,8 @@ ru:
         edit: "Изменить"
         delete: "Удалить"
         confirm: "Удалить выбранный тест?"
+      form_inline:
+        submit: "ОК"
     questions:
       question:
         show: "Открыть"
