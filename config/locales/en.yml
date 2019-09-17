@@ -35,7 +35,7 @@ en:
       failure: "The test is not passed"
       back: "Back to tests"
     show:
-      header: "Passing the %{title} Test (%{current_question} of %{number_of_questions})"
+      header: "Passing the %{title} Test"
       next: "Next"
     gist:
       success: "Gist was successfully created! URL: %{url}"
@@ -63,6 +63,8 @@ en:
         edit: "Edit"
         delete: "Delete"
         confirm: "Are you sure?"
+      form_inline:
+        submit: "OK"
     questions:
       question:
         show: "Show"
