@@ -1,0 +1,19 @@
+<div class="container-content">
+    <div class="container">
+        <%= form_with(url: feedback_path, method: :post) do |form| %>
+            <div class="form-group">
+                <%= label_tag 'name', 'Имя' %>
+                <%= text_field_tag 'name', nil, class: 'form-control', placeholder: 'Укажите Ваше имя' %>
+            </div>
+           <div class="form-group">
+               <%= label_tag 'email', 'Email' %>
+               <%= email_field_tag 'email', nil, class: 'form-control', placeholder: 'Укажите Ваш email' %>
+           </div>
+           <div class="form-group">
+               <%= label_tag 'comments', 'Комментарий' %>
+               <%= text_area_tag 'comments', nil, class: 'form-control', rows: 4, placeholder: 'Комментарий...' %>
+           </div>
+           <%= form.submit 'Отправить' %>
+       <% end %>
+  </div>
+</div>

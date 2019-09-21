@@ -82,4 +82,11 @@ en:
 
   tests_mailer:
     completed_test:
-      subject: 'You just completed the TestGuru test!'
+      subject: "You just completed the TestGuru test!"
+
+  feedback:
+    create:
+      name_error: "Enter your name"
+      email_error: "Enter your email"
+      comments_error: "Enter your comments"
+      success: "Your request has been sent"
