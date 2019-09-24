@@ -13,7 +13,9 @@ class TestPassage < ApplicationRecord
   end
 
   def accept!(answer_ids)
-    if correct_answer?(answer_ids)
+    return if completed?
+
+    if correct_answer?(answer_ids || [])
       self.correct_questions += 1
     end
     
@@ -21,6 +23,8 @@ class TestPassage < ApplicationRecord
   end
 
   def test_passed?
+    return true if test.questions.count == 0
+    
     percent = self.correct_questions / test.questions.count * 100
     percent >= PERCENT_FOR_PASSING_TEST
   end
