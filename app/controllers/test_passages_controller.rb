@@ -11,7 +11,7 @@ class TestPassagesController < ApplicationController
 
     if @test_passage.completed?
       if @test_passage.test_passed?
-        Badge.give_badges(current_user, @test_passage)
+        BadgeGettingService.new(current_user, @test_passage).give_badges
       end
       
       TestsMailer.completed_test(@test_passage).deliver_now

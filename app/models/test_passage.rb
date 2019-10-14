@@ -9,6 +9,7 @@ class TestPassage < ApplicationRecord
   before_validation :before_validation_set_next_question, on: :update
 
   scope :user_passages, -> (user) { where(user: user) }
+  scope :user_passages_for_test, -> (user, test) { where(user: user, test: test) }
 
   def completed?
     current_question.nil?
