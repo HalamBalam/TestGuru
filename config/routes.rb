@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :user_badges, only: %i[index show]
+  resources :badges, only: %i[index show]
+
   namespace :admin do
     resources :tests do
       patch :update_inline, on: :member
@@ -27,6 +30,7 @@ Rails.application.routes.draw do
     end
 
     resources :gists, only: :index
+    resources :badges
   end
 
   get '/feedback', to: 'feedback#new'

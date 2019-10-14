@@ -1,0 +1,37 @@
+<%= form_with model: [:admin, @badge], local: true do |form| %>
+  <%= render 'shared/errors', resource: @badge %>
+
+  <p>
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :badge_name %>
+  </p>
+  
+  <% Category.all.each do |category| %>
+    <div class="form-check">
+      <% value = category.id %>
+      <% id = "rule_category_id_#{value}" %>
+      <% checked = @badge.category_id == value %>
+
+      <%= form.radio_button :category_id, value, id: id, name: "badge[rule]", class: "form-check-input", checked: checked %>
+      <%= form.label :category_id, "Успешное прохождение всех тестов категории #{category.title}", for: id.to_sym, class: "form-check-label" %>
+    </div>
+  <% end %>
+
+  <div class="form-check">
+    <%= form.radio_button :rule, "first_attempt", name: "badge[rule]", class: "form-check-input", checked: @badge.first_attempt == true %>
+    <%= form.label :rule_first_attempt, "Успешное прохождения теста с первой попытки", class: "form-check-label" %>
+  </div>
+
+  <div class="form-check">
+    <%= form.radio_button :rule, "level", name: "badge[rule]", class: "form-check-input", checked: @badge.level.to_i > 0 %>
+    <%= form.label :rule_level, "Успешное прохождение всех тестов с уровнем", class: "form-check-label" %>
+
+    <%= form.text_field :level, id: :badge_level %>
+  </div> 
+
+  <p>
+    <%= image_tag default_image %>
+  </p>
+
+  <p><%= form.submit %></p>
+<% end %>
