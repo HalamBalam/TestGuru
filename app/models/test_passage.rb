@@ -8,6 +8,9 @@ class TestPassage < ApplicationRecord
   before_validation :before_validation_set_first_question, on: :create
   before_validation :before_validation_set_next_question, on: :update
 
+  scope :user_passages, -> (user) { where(user: user) }
+  scope :user_passages_for_test, -> (user, test) { where(user: user, test: test) }
+
   def completed?
     current_question.nil?
   end
@@ -50,4 +53,5 @@ class TestPassage < ApplicationRecord
   def next_question
     test.questions.order(:id).where('id > ?', current_question.id).first
   end
+
 end

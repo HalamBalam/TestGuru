@@ -23,10 +23,23 @@ en:
       login: "Log in"
       logout: "Log out"
       signup: "Sign up"
+      welcome: "Welcome"
+      user_badges: "My Badges"
+      badges: "All Badges"
 
   tests:
     test:
       start: "Start"
+
+  badges:
+    show:
+      name: "Name"
+      rule: "Rule"
+      back: "Back"
+
+  user_badges:
+    user_badge:
+      show: "Show"
 
   test_passages:
     result:
@@ -71,6 +84,31 @@ en:
         edit: "Edit"
         delete: "Delete"
         confirm: "Are you sure?"
+    badges:
+      create:
+        success: "Badge was successfully created."
+        level_error: "Level is empty"
+        rule_error: "No rule selected"
+      update:
+        success: "Badge was successfully updated."
+      destroy:
+        success: "Badge was successfully deleted."
+      new:
+        header: "Create New Badge"
+        back: "Back"
+      edit:
+        header: "Edit Badge"
+        back: "Back"
+      show:
+        name: "Name"
+        rule: "Rule"
+        edit: "Edit"
+        back: "Back"
+      badge:
+        show: "Show"
+        edit: "Edit"
+        delete: "Delete"
+        confirm: "Are you sure?"  
     nav:
       header: "Admin Panel for"
       welcome: "Welcome"
@@ -79,6 +117,7 @@ en:
         header: "Menu"
         tests: "Tests"
         gists: "Gists"
+        badges: "Badges"
 
   tests_mailer:
     completed_test:

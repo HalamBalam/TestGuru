@@ -1,0 +1,15 @@
+<p>
+  <strong><%= t('.name') %>:</strong>
+  <%= @badge.name %>
+</p>
+
+<p>
+  <strong><%= t('.rule') %>:</strong>
+  <%= rule_info(@badge) %>
+</p>
+
+<p>
+  <%= image_tag default_image %>
+</p>
+
+<%= link_to t('.back'), badges_path %>

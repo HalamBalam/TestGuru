@@ -25,10 +25,25 @@ ru:
       login: "Вход"
       logout: "Выход"
       signup: "Регистрация"
+      welcome: "Добро пожаловать"
+      user_badges: "Мои награды"
+      badges: "Все награды"
 
   tests:
     test:
       start: "Начать"
+
+  badges:
+    badge:
+      show: "Открыть"
+    show:
+      name: "Наименование"
+      rule: "Правило"
+      back: "Назад"
+
+  user_badges:
+    user_badge:
+      show: "Открыть"
 
   test_passages:
     result:
@@ -72,7 +87,32 @@ ru:
         show: "Открыть"
         edit: "Изменить"
         delete: "Удалить"
-        confirm: "Удалить выбранный вопрос?"  
+        confirm: "Удалить выбранный вопрос?"
+    badges:
+      create:
+        success: "Награда успешно создана."
+        level_error: "Не заполнен уровень теста"
+        rule_error: "Не выбрано правило"
+      update:
+        success: "Награда успешно обновлена."
+      destroy:
+        success: "Награда успешно удалена."
+      new:
+        header: "Создание награды"
+        back: "Назад"
+      edit:
+        header: "Редактирование награды"
+        back: "Назад"
+      show:
+        name: "Наименование"
+        rule: "Правило"
+        edit: "Изменить"
+        back: "Назад"
+      badge:
+        show: "Открыть"
+        edit: "Изменить"
+        delete: "Удалить"
+        confirm: "Удалить выбранную награду?"  
     nav:
       header: "Панель администратора"
       welcome: "Добро пожаловать"
@@ -81,6 +121,7 @@ ru:
         header: "Меню"
         tests: "Доступные тесты"
         gists: "Gists"
+        badges: "Награды"
 
   tests_mailer:
     completed_test:
