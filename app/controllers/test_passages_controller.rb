@@ -1,7 +1,9 @@
 class TestPassagesController < ApplicationController
 
+  skip_before_action :verify_authenticity_token
+
   before_action :authenticate_user!
-  before_action :set_test_passage, only: %i[show update result gist]
+  before_action :set_test_passage, only: %i[show update result gist reduce_time end_test_with_timeout]
 
   def show
   end
@@ -10,12 +12,7 @@ class TestPassagesController < ApplicationController
     @test_passage.accept!(params[:answer_ids])
 
     if @test_passage.completed?
-      if @test_passage.test_passed?
-        BadgeGettingService.new(current_user, @test_passage).give_badges
-      end
-      
-      TestsMailer.completed_test(@test_passage).deliver_now
-      redirect_to result_test_passage_path(@test_passage)
+      end_test  
     else
       render :show
     end
@@ -42,10 +39,39 @@ class TestPassagesController < ApplicationController
     redirect_to @test_passage, flash_options
   end
 
+  def reduce_time
+    return if @test_passage.completed?
+    return if @test_passage.elapsed_time == 0.0
+
+    if @test_passage.elapsed_time == @test_passage.elapsed_time.floor
+      @test_passage.elapsed_time -= 0.41
+    else
+      @test_passage.elapsed_time -= 0.01
+    end
+
+    @test_passage.save!
+  end
+
+  def end_test_with_timeout
+    @test_passage.current_question = nil
+    @test_passage.save!
+      
+    end_test
+  end
+
   private
 
   def set_test_passage
     @test_passage = TestPassage.find(params[:id])
+  end
+
+  def end_test
+    if @test_passage.test_passed?
+      BadgeGettingService.new(current_user, @test_passage).give_badges
+    end
+    
+    TestsMailer.completed_test(@test_passage).deliver_now
+    redirect_to result_test_passage_path(@test_passage)  
   end
 
 end

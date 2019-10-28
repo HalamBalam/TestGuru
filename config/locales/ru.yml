@@ -11,6 +11,7 @@ ru:
         title: "Название"
         level: "Уровень"
         category_id: "Категория"
+        time: "Время"
     select:
       prompt: "Выберите значение"
 

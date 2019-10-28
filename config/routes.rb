@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     member do
       get :result
       post :gist
+      put :reduce_time
+      put :end_test_with_timeout
     end
   end
 
