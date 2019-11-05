@@ -18,11 +18,17 @@ class TestPassage < ApplicationRecord
   def accept!(answer_ids)
     return if completed?
 
-    if correct_answer?(answer_ids || [])
-      self.correct_questions += 1
+    self.elapsed_time = [self.created_at + test.time * 60 - Time.current, 0].max
+    if self.elapsed_time == 0.0
+      self.current_question = nil
+    else  
+      if correct_answer?(answer_ids || [])
+        self.correct_questions += 1
+      end
+      
+      self.current_question = next_question
     end
     
-    self.current_question = next_question
     save!
   end
 
@@ -41,7 +47,7 @@ class TestPassage < ApplicationRecord
   end
 
   def before_validation_set_elapsed_time
-    self.elapsed_time = test.time if test.present?
+    self.elapsed_time = test.time * 60 if test.present?
   end
 
   def correct_answer?(answer_ids)

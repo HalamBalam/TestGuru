@@ -3,7 +3,7 @@ class TestPassagesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   before_action :authenticate_user!
-  before_action :set_test_passage, only: %i[show update result gist reduce_time end_test_with_timeout]
+  before_action :set_test_passage, only: %i[show update result gist end_test_with_timeout]
 
   def show
   end
@@ -37,26 +37,6 @@ class TestPassagesController < ApplicationController
     end
 
     redirect_to @test_passage, flash_options
-  end
-
-  def reduce_time
-    return if @test_passage.completed?
-    return if @test_passage.elapsed_time == 0.0
-
-    if @test_passage.elapsed_time == @test_passage.elapsed_time.floor
-      @test_passage.elapsed_time -= 0.41
-    else
-      @test_passage.elapsed_time -= 0.01
-    end
-
-    @test_passage.save!
-  end
-
-  def end_test_with_timeout
-    @test_passage.current_question = nil
-    @test_passage.save!
-      
-    end_test
   end
 
   private

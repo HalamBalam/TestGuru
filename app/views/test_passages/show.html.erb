@@ -23,11 +23,7 @@
   <%= @test_passage.created_at %>
 </p>
 
-<p class="timer"><%= time_format(@test_passage.elapsed_time) %></p>
-
-<%= button_to 'Reduce time', reduce_time_test_passage_path(@test_passage), method: :put, class: 'reduce-time hide' %>
-
-<%= button_to 'End test with timeout', end_test_with_timeout_test_passage_path(@test_passage), method: :put, class: 'end-test-with-timeout hide' %>
+<p class="timer"><%= elapsed_time(@test_passage) %></p>
 
 <%= form_with url: test_passage_path(@test_passage), local: true, method: :put do |form| %>
   <% if !@test_passage.current_question.nil? %>
@@ -40,5 +36,5 @@
   <% end %>
 
   <p><%= link_to 'Gist Question', gist_test_passage_path(@test_passage), method: :put %></p>
-  <p><%= form.submit t('.next') %></p>
+  <p><%= form.submit t('.next'), class: 'submit-test-passage' %></p>
 <% end %>

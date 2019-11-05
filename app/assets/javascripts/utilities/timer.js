@@ -18,17 +18,11 @@ function timer() {
     minutes--
     seconds = 59
   } else {
-    var button = document.querySelector('.end-test-with-timeout')
+    var button = document.querySelector('.submit-test-passage')
     button.click()
     clearInterval(timerId)
     return
   }
 
   control.textContent = ("0" + minutes.toString()).slice(-2) + ":" + ("0" + seconds.toString()).slice(-2)
-
-  var button = document.querySelector('.reduce-time')
-
-  var xhr = new XMLHttpRequest()
-  xhr.open('PUT', button.form.action, true);
-  xhr.send()
 }
