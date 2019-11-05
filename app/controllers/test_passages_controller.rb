@@ -3,7 +3,7 @@ class TestPassagesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   before_action :authenticate_user!
-  before_action :set_test_passage, only: %i[show update result gist end_test_with_timeout]
+  before_action :set_test_passage, only: %i[show update result gist]
 
   def show
   end
