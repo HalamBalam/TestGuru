@@ -19,6 +19,12 @@
   </p>
 <% end %>
 
+<p class="hide">
+  <%= @test_passage.created_at %>
+</p>
+
+<p class="timer"><%= elapsed_time(@test_passage) %></p>
+
 <%= form_with url: test_passage_path(@test_passage), local: true, method: :put do |form| %>
   <% if !@test_passage.current_question.nil? %>
     <%= form.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body, include_hidden: false do |b| %>
@@ -29,6 +35,6 @@
     <% end %>
   <% end %>
 
-  <p><%= link_to 'Gist Question', gist_test_passage_path(@test_passage), method: :post %></p>
-  <p><%= form.submit t('.next') %></p>
+  <p><%= link_to 'Gist Question', gist_test_passage_path(@test_passage), method: :put %></p>
+  <p><%= form.submit t('.next'), class: 'submit-test-passage' %></p>
 <% end %>

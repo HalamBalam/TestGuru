@@ -14,6 +14,11 @@
 </p>
 
 <p>
+  <strong>Время:</strong>
+  <%= time_format(@test.time * 60) %>
+</p>
+
+<p>
   <%= link_to 'Создать вопрос', new_admin_test_question_path(@test) %>
 </p>
 
